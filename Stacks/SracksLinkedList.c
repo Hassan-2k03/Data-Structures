@@ -30,8 +30,7 @@ NODE *creatnode(int ele)
 
 void push(LList *ptr, int ele)
 {
-    NODE *temp;
-    temp = creatnode(ele);
+    NODE *temp = creatnode(ele);
     temp->link = ptr->head;
     ptr->head = temp;
 }
