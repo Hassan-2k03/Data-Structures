@@ -19,8 +19,7 @@ void init(LList *ptr)
 
 NODE *creatnode(int ele)
 {
-    NODE *temp;
-    temp = malloc(sizeof(NODE));
+    NODE *temp = malloc(sizeof(NODE));
     if (temp != NULL)
     {
         temp->data = ele;
