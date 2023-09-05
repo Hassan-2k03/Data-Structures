@@ -187,13 +187,14 @@ int findNthFromEnd(struct Node *head, int n)
         count++;
         cur = cur->next;
     }
+    count++;
     int x = count - n;
     while (x != 0)
     {
         cur2 = cur2->next;
         x--;
     }
-    return (cur2->next->data);
+    return (cur2->data);
 }
 
 int main()
