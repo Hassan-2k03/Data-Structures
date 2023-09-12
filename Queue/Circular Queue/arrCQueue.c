@@ -11,6 +11,4 @@ int main()
     int ele;
     int x;
 
-
-
 }
