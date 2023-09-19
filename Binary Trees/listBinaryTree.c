@@ -182,66 +182,6 @@ int countNodes(NODE *root)
     return countNodes(root->left) + countNodes(root->right) + 1;
 }
 
-// iterative method for delete
-/* NODE *delete (NODE *root, int ele)
-{
-    if (root == NULL)
-        return NULL;
-    NODE *cur = root;
-    NODE *prev = NULL;
-    while (cur != NULL)
-    {
-        if (ele == cur->data)
-            break;
-        prev = cur;
-        if (ele < cur->data)
-            cur = cur->left;
-        else
-            cur = cur->right;
-    }
-    if (cur == NULL)
-        return NULL;
-    if (cur->left == NULL && cur->right == NULL)
-    {
-        if (prev == NULL)
-            root = NULL;
-        else if (prev->left == cur)
-            prev->left = NULL;
-        else
-            prev->right = NULL;
-        free(cur);
-    }
-    else if (cur->left == NULL)
-    {
-        if (prev == NULL)
-            root = cur->right;
-        else if (prev->left == cur)
-            prev->left = cur->right;
-        else
-            prev->right = cur->right;
-        free(cur);
-    }
-    else if (cur->right == NULL)
-    {
-        if (prev == NULL)
-            root = cur->left;
-        else if (prev->left == cur)
-            prev->left = cur->left;
-        else
-            prev->right = cur->left;
-        free(cur);
-    }
-    else
-    {
-        NODE *temp = cur->right;
-        while (temp->left != NULL)
-            temp = temp->left;
-        cur->data = temp->data;
-        cur->right = delete (cur->right, temp->data);
-    }
-    return root;
-} */
-
 // recursive method for delete
 NODE *delete(NODE *root, int ele)
 {
@@ -271,7 +211,6 @@ NODE *delete(NODE *root, int ele)
         root->data = temp->data;
         root->right = delete (root->right, temp->data);
     }
-    return root;
 }
 
 int main()
