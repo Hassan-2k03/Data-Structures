@@ -26,6 +26,7 @@ void bottomUp(int h[],int n)
         h[j]=key;
     }
 }
+
 int main()
 {
     int h[max],n,i;
