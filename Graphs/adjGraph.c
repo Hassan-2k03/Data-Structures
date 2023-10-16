@@ -20,7 +20,7 @@ void createGraph(graph *g)
         if(i<0 || j<0 || i>=g->n || j>=g->n)
             break;
         g->a[i][j]=1; // for directed graph
-        g->a[j][i]=1; // for undirected graph
+        //g->a[j][i]=1; // for undirected graph
     }
 }
 
