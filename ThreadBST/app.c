@@ -1,4 +1,6 @@
-/*  Write a C program that constructs a threaded binary search tree (TBST) from a sequence of N integers. The program should allow the user to input the number of elements (N) and the N integers to build the TBST. After constructing the TBST, implement a function pathExists that determines if a given path (a sequence of nodes) exists in the TBST, utilizing threaded links to optimize the search.
+/*  Write a C program that constructs a threaded binary search tree (TBST) from a sequence of N integers. The program should allow the user
+to input the number of elements (N) and the N integers to build the TBST. After constructing the TBST, implement a function pathExists
+that determines if a given path (a sequence of nodes) exists in the TBST, utilizing threaded links to optimize the search.
 
 Input Format
 
@@ -69,38 +71,38 @@ struct TBSTNode *insert(struct TBSTNode *root, int data)
     }
     else
     {
-        struct TBSTNode *current = root;
+        struct TBSTNode *cur = root;
         struct TBSTNode *parent = NULL;
         while (1)
         {
-            parent = current;
-            if (data < current->data)
+            parent = cur;
+            if (data < cur->data)
             {
-                if (current->lthread == 0)
+                if (cur->lthread == 0)
                 {
-                    current = current->left;
+                    cur = cur->left;
                 }
                 else
                 {
-                    newNode->left = current->left;
-                    newNode->right = current;
-                    current->left = newNode;
-                    current->lthread = 0;
+                    newNode->left = cur->left;
+                    newNode->right = cur;
+                    cur->left = newNode;
+                    cur->lthread = 0;
                     break;
                 }
             }
             else
             {
-                if (current->rthread == 0)
+                if (cur->rthread == 0)
                 {
-                    current = current->right;
+                    cur = cur->right;
                 }
                 else
                 {
-                    newNode->left = current;
-                    newNode->right = current->right;
-                    current->right = newNode;
-                    current->rthread = 0;
+                    newNode->left = cur;
+                    newNode->right = cur->right;
+                    cur->right = newNode;
+                    cur->rthread = 0;
                     break;
                 }
             }
@@ -112,7 +114,31 @@ struct TBSTNode *insert(struct TBSTNode *root, int data)
 // Function to check if a path exists in the TBST
 int pathExists(struct TBSTNode *root, int path[], int pathLength)
 {
-    // Write your solution here
+    struct TBSTNode *cur = root;
+    int i = 0;
+    while (cur != NULL)
+    {
+        if (cur->data == path[i])
+        {
+            i++;
+            if (i == pathLength)
+                return 1;
+            cur = cur->left;
+        }
+        else if (cur->data > path[i])
+        {
+            if (cur->lthread != 0)
+                cur = cur->left;
+            else
+                return 0;
+        }
+        else{
+            if (cur->rthread != 0)
+                cur = cur->right;
+            else
+                return 0;
+        }
+    }
 }
 
 // Main function for constructing the TBST and checking the path
