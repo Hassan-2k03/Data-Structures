@@ -60,7 +60,7 @@ int stack_precedence(char x)
 
 void convert_infix_postfix(char *infix, char *postfix)
 {
-    char s[100],ch;
+    char s[100], ch;
     int top = -1, i = 0, j = 0;
     push(s, &top, '#');
     for (i = 0; infix[i] != '\0'; i++)
@@ -71,12 +71,11 @@ void convert_infix_postfix(char *infix, char *postfix)
         if (stack_precedence(s[top]) != input_precedence(ch))
             push(s, &top, ch);
         else
-            pop(s, &top);        
+            pop(s, &top);
     }
-    while(s[top]!='#')
-        postfix[j++]=pop(s,&top);
-    postfix[j]='\0';
-    
+    while (s[top] != '#')
+        postfix[j++] = pop(s, &top);
+    postfix[j] = '\0';
 }
 
 int main()
