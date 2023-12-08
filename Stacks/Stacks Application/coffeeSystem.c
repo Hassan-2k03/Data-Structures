@@ -23,7 +23,8 @@ isEmpty
 For Example:
 6
 placeOrder Cappuccino
-placeOrder Espresso placeOrder Latte
+placeOrder Espresso 
+placeOrder Latte
 serveOrder
 serveOrder
 isEmpty
@@ -41,7 +42,8 @@ Served order: item
 There are pending orders.
 The system is empty.
 For Example:
-Added order: Cappuccino Added order: Espresso
+Added order: Cappuccino 
+Added order: Espresso
 Added order: Latte
 Served order: Cappuccino
 Served order: Espresso
